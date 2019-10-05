@@ -18,8 +18,7 @@ namespace NeuralNetwork_ns
 		public:
 
 		private:
-			_STD vector<Neuron> m_Neurons;
-			NeuralNetwork_ns::numeric m_Bias;
+			NeuralNetwork_ns::neuron_list_t m_Neurons;
 		};
 
 		class InputLayer : public ILayer

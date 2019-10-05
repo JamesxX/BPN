@@ -13,5 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\public">
+      <UniqueIdentifier>{da697981-3dc7-4e90-8423-8c42f2766779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\private">
+      <UniqueIdentifier>{8637fe21-1e23-4bfd-8e3f-dbcb21febf05}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="public\activationFunction.hpp">
+      <Filter>Source Files\public</Filter>
+    </ClInclude>
+    <ClInclude Include="public\forwardDeclaration.hpp">
+      <Filter>Source Files\public</Filter>
+    </ClInclude>
+    <ClInclude Include="public\layer.hpp">
+      <Filter>Source Files\public</Filter>
+    </ClInclude>
+    <ClInclude Include="public\library.hpp">
+      <Filter>Source Files\public</Filter>
+    </ClInclude>
+    <ClInclude Include="public\network.hpp">
+      <Filter>Source Files\public</Filter>
+    </ClInclude>
+    <ClInclude Include="public\neuron.hpp">
+      <Filter>Source Files\public</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="private\network.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
+    <ClCompile Include="private\neuron.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

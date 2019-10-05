@@ -13,13 +13,13 @@ namespace NeuralNetwork_ns
 		class IActivationFunction
 		{
 		public:
-			virtual NeuralNetwork_ns::numeric operator()(NeuralNetwork_ns::numeric);
+			virtual NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t);
 		};
 
 		class Sigmoid : IActivationFunction
 		{
 		public:
-			NeuralNetwork_ns::numeric operator()(NeuralNetwork_ns::numeric) override;
+			NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t) override;
 		};
 
 		class Threshold : IActivationFunction
@@ -27,7 +27,7 @@ namespace NeuralNetwork_ns
 		private:
 			NeuralNetwork_ns::numeric m_Threshhold;
 		public:
-			NeuralNetwork_ns::numeric operator()(NeuralNetwork_ns::numeric) override;
+			NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t) override;
 		};
 
 	}

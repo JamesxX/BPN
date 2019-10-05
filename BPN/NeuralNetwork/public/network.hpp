@@ -15,7 +15,7 @@ namespace NeuralNetwork_ns
 	public:
 
 	private:
-		_STD vector<Layer> m_Layers;
+		NeuralNetwork_ns::Layer::layer_list_t m_Layers;
 	};
 
 }
