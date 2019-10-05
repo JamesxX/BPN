@@ -47,5 +47,8 @@
     <ClCompile Include="private\neuron.cpp">
       <Filter>Source Files\private</Filter>
     </ClCompile>
+    <ClCompile Include="private\activationFunction.cpp">
+      <Filter>Source Files\private</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

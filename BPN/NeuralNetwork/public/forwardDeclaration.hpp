@@ -39,7 +39,8 @@ namespace NeuralNetwork_ns
 	{
 		class IActivationFunction;
 		class Sigmoid;
-		class Threshold;
+		class Identity;
+		class TanH;
 	};
 
 };

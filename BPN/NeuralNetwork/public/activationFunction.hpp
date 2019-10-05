@@ -14,20 +14,28 @@ namespace NeuralNetwork_ns
 		{
 		public:
 			virtual NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t);
+			virtual NeuralNetwork_ns::output_t derivative(NeuralNetwork_ns::output_t);
 		};
 
 		class Sigmoid : IActivationFunction
 		{
 		public:
 			NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t) override;
+			NeuralNetwork_ns::output_t derivative(NeuralNetwork_ns::output_t) override;
 		};
 
-		class Threshold : IActivationFunction
+		class Identity : IActivationFunction
 		{
-		private:
-			NeuralNetwork_ns::numeric m_Threshhold;
 		public:
 			NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t) override;
+			NeuralNetwork_ns::output_t derivative(NeuralNetwork_ns::output_t) override;
+		};
+
+		class TanH : IActivationFunction
+		{
+		public:
+			NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t) override;
+			NeuralNetwork_ns::output_t derivative(NeuralNetwork_ns::output_t) override;
 		};
 
 	}

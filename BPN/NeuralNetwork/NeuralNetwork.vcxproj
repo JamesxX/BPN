@@ -135,6 +135,7 @@
     <ClInclude Include="public\neuron.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="private\activationFunction.cpp" />
     <ClCompile Include="private\network.cpp" />
     <ClCompile Include="private\neuron.cpp" />
   </ItemGroup>
