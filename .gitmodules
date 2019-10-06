@@ -1,0 +1,3 @@
+[submodule "BPN/dependencies/eigen"]
+	path = BPN/dependencies/eigen
+	url = https://github.com/eigenteam/eigen-git-mirror

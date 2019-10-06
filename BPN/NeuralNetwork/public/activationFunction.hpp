@@ -13,30 +13,23 @@ namespace NeuralNetwork_ns
 		class IActivationFunction
 		{
 		public:
-			virtual NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t);
-			virtual NeuralNetwork_ns::output_t derivative(NeuralNetwork_ns::output_t);
+			virtual NeuralNetwork_ns::matrix_component_t operator()(NeuralNetwork_ns::matrix_component_t);
+			virtual NeuralNetwork_ns::matrix_component_t derivative(NeuralNetwork_ns::matrix_component_t);
 		};
 
-		class Sigmoid : IActivationFunction
-		{
-		public:
-			NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t) override;
-			NeuralNetwork_ns::output_t derivative(NeuralNetwork_ns::output_t) override;
-		};
+#define ActivationFunctionPreprocessorDeclaration(name) \
+class name : IActivationFunction \
+{ \
+public: \
+	NeuralNetwork_ns::matrix_component_t operator()(NeuralNetwork_ns::matrix_component_t) override; \
+	NeuralNetwork_ns::matrix_component_t derivative(NeuralNetwork_ns::matrix_component_t) override; \
+} \
 
-		class Identity : IActivationFunction
-		{
-		public:
-			NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t) override;
-			NeuralNetwork_ns::output_t derivative(NeuralNetwork_ns::output_t) override;
-		};
+		ActivationFunctionPreprocessorDeclaration(Sigmoid);
+		ActivationFunctionPreprocessorDeclaration(Identity);
+		ActivationFunctionPreprocessorDeclaration(TanH);
 
-		class TanH : IActivationFunction
-		{
-		public:
-			NeuralNetwork_ns::output_t operator()(NeuralNetwork_ns::output_t) override;
-			NeuralNetwork_ns::output_t derivative(NeuralNetwork_ns::output_t) override;
-		};
+#undef ActivationFunctionPreprocessorDeclaration
 
 	}
 

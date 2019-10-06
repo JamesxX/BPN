@@ -132,12 +132,11 @@
     <ClInclude Include="public\layer.hpp" />
     <ClInclude Include="public\library.hpp" />
     <ClInclude Include="public\network.hpp" />
-    <ClInclude Include="public\neuron.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="private\activationFunction.cpp" />
+    <ClCompile Include="private\layer.cpp" />
     <ClCompile Include="private\network.cpp" />
-    <ClCompile Include="private\neuron.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

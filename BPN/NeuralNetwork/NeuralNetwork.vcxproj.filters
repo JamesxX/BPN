@@ -36,18 +36,15 @@
     <ClInclude Include="public\network.hpp">
       <Filter>Source Files\public</Filter>
     </ClInclude>
-    <ClInclude Include="public\neuron.hpp">
-      <Filter>Source Files\public</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="private\network.cpp">
       <Filter>Source Files\private</Filter>
     </ClCompile>
-    <ClCompile Include="private\neuron.cpp">
+    <ClCompile Include="private\activationFunction.cpp">
       <Filter>Source Files\private</Filter>
     </ClCompile>
-    <ClCompile Include="private\activationFunction.cpp">
+    <ClCompile Include="private\layer.cpp">
       <Filter>Source Files\private</Filter>
     </ClCompile>
   </ItemGroup>

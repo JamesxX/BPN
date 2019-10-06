@@ -4,8 +4,7 @@
 #include <NeuralNetwork/public/library.hpp>
 #include <NeuralNetwork/public/forwardDeclaration.hpp>
 
-#include <NeuralNetwork/public/neuron.hpp>
-#include <vector>
+#include <NeuralNetwork/public/activationFunction.hpp>
 
 namespace NeuralNetwork_ns
 {
@@ -16,9 +15,36 @@ namespace NeuralNetwork_ns
 		class ILayer
 		{
 		public:
+			ILayer(NeuralNetwork_ns::ActivationFunction::IActivationFunction ActivationFunction);
+
+			void SetInputCount(NeuralNetwork_ns::numeric InputCount);
+			NeuralNetwork_ns::numeric GetInputCount();
+
+			void SetOutputCount(NeuralNetwork_ns::numeric OutputCount);
+			NeuralNetwork_ns::numeric GetOutputCount();
+
+			void SetLayerWeights(NeuralNetwork_ns::layer_weights_t Weights);
+			NeuralNetwork_ns::layer_weights_t GetLayerWeights();
+
+			void SetLayerBiases(NeuralNetwork_ns::layer_biases_t Biases);
+			NeuralNetwork_ns::layer_biases_t GetLayerBiases();
+
+			void SetLayerActivationFunction(NeuralNetwork_ns::ActivationFunction::IActivationFunction ActivationFunction);
+			NeuralNetwork_ns::ActivationFunction::IActivationFunction GetLayerActivationFunction();
+
+			void InvalidateMatrix();
+			void RandomizeMatrix();
+			NeuralNetwork_ns::layer_output_t CalculateInducedLocalField(NeuralNetwork_ns::layer_input_t);
+			NeuralNetwork_ns::layer_output_t CalculateOutput(NeuralNetwork_ns::layer_input_t);
 
 		private:
-			NeuralNetwork_ns::neuron_list_t m_Neurons;
+			NeuralNetwork_ns::numeric m_nInputs;
+			NeuralNetwork_ns::numeric m_nOutputs;
+			
+			NeuralNetwork_ns::layer_weights_t m_Weights;
+			NeuralNetwork_ns::layer_biases_t m_Bias;
+
+			NeuralNetwork_ns::ActivationFunction::IActivationFunction m_ActivationFunction;
 		};
 
 		class InputLayer : public ILayer
@@ -26,7 +52,7 @@ namespace NeuralNetwork_ns
 
 		};
 
-		class HiddenLayer : public ILayer
+		class DenseLayer : public ILayer
 		{
 
 		};

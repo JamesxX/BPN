@@ -10,13 +10,18 @@
 namespace NeuralNetwork_ns
 {
 
-	class Net
+	namespace Network
 	{
-	public:
 
-	private:
-		NeuralNetwork_ns::Layer::layer_list_t m_Layers;
-	};
+		class MLP
+		{
+		public:
+
+		private:
+			NeuralNetwork_ns::Network::layer_list_t m_Layers;
+		};
+
+	}
 
 }
 

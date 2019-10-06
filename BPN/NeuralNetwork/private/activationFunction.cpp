@@ -6,39 +6,51 @@
 
 namespace ActivationFunction = NeuralNetwork_ns::ActivationFunction;
 
-// Sigmoid
+#define ActivationFunctionPreprocessorSignature(name, method) \
+NeuralNetwork_ns::matrix_component_t ActivationFunction::name::method(NeuralNetwork_ns::matrix_component_t input)
 
-NeuralNetwork_ns::output_t ActivationFunction::Sigmoid::operator()(NeuralNetwork_ns::output_t input)
-{
-	return 1/(1 + exp(-input));
-}
-
-NeuralNetwork_ns::output_t ActivationFunction::Sigmoid::derivative(NeuralNetwork_ns::output_t input)
-{
-	NeuralNetwork_ns::output_t sigmaX = (*this)(input);
-	return sigmaX * (1 - sigmaX);
-}
-
-// Identity
-
-NeuralNetwork_ns::output_t ActivationFunction::Identity::operator()(NeuralNetwork_ns::output_t input)
+// IActivationFunction
+ActivationFunctionPreprocessorSignature(IActivationFunction, operator())
 {
 	return input;
 }
 
-NeuralNetwork_ns::output_t ActivationFunction::Identity::derivative(NeuralNetwork_ns::output_t input)
+ActivationFunctionPreprocessorSignature(IActivationFunction, derivative)
+{
+	return 1;
+}
+
+
+// Sigmoid
+ActivationFunctionPreprocessorSignature(Sigmoid, operator())
+{
+	return 1/(1 + exp(-input));
+}
+
+ActivationFunctionPreprocessorSignature(Sigmoid, derivative)
+{
+	NeuralNetwork_ns::matrix_component_t sigmaX = (*this)(input);
+	return sigmaX * (1 - sigmaX);
+}
+
+// Identity
+ActivationFunctionPreprocessorSignature(Identity, operator())
+{
+	return input;
+}
+
+ActivationFunctionPreprocessorSignature(Identity, derivative)
 {
 	return 1;
 }
 
 // TanH
-
-NeuralNetwork_ns::output_t ActivationFunction::TanH::operator()(NeuralNetwork_ns::output_t input)
+ActivationFunctionPreprocessorSignature(TanH, operator())
 {
 	return (exp(input) - exp(-input))/(exp(input) + exp(-input));
 }
 
-NeuralNetwork_ns::output_t ActivationFunction::TanH::derivative(NeuralNetwork_ns::output_t input)
+ActivationFunctionPreprocessorSignature(Identity, derivative)
 {
 	return 1 - pow((*this)(input), 2);
 }
