@@ -6,6 +6,12 @@
 
 namespace Layer = NeuralNetwork_ns::Layer;
 
+Layer::ILayer::ILayer(NeuralNetwork_ns::numeric nOutput, NeuralNetwork_ns::ActivationFunction::IActivationFunction ActivationFunction)
+	: ILayer(ActivationFunction)
+{
+	SetOutputCount(nOutput);
+}
+
 Layer::ILayer::ILayer(NeuralNetwork_ns::ActivationFunction::IActivationFunction ActivationFunction)
 {
 	SetLayerActivationFunction(ActivationFunction);
@@ -76,12 +82,22 @@ void Layer::ILayer::RandomizeMatrix()
 
 }
 
-NeuralNetwork_ns::layer_output_t Layer::ILayer::CalculateInducedLocalField(NeuralNetwork_ns::layer_input_t input)
+void Layer::ILayer::CalculateInducedLocalField(NeuralNetwork_ns::layer_input_t input)
 {
-	return m_Weights * input + m_Bias;
+	m_InducedLocalField = m_Weights * input + m_Bias;
 }
 
-NeuralNetwork_ns::layer_output_t Layer::ILayer::CalculateOutput(NeuralNetwork_ns::layer_input_t input)
+NeuralNetwork_ns::layer_output_t Layer::ILayer::ReadInducedLocalField()
 {
-	return CalculateInducedLocalField(input).unaryExpr(m_ActivationFunction);
+	return m_InducedLocalField;
+}
+
+void Layer::ILayer::CalculateOutput(NeuralNetwork_ns::layer_input_t input)
+{
+	m_Activation = m_InducedLocalField.unaryExpr(m_ActivationFunction);
+}
+
+NeuralNetwork_ns::layer_output_t Layer::ILayer::ReadOutput()
+{
+	return m_Activation;
 }
