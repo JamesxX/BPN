@@ -15,6 +15,7 @@ namespace NeuralNetwork_ns
 		class ILayer
 		{
 		public:
+			ILayer(NeuralNetwork_ns::numeric nOutput, NeuralNetwork_ns::ActivationFunction::IActivationFunction ActivationFunction);
 			ILayer(NeuralNetwork_ns::ActivationFunction::IActivationFunction ActivationFunction);
 
 			void SetInputCount(NeuralNetwork_ns::numeric InputCount);
@@ -34,8 +35,12 @@ namespace NeuralNetwork_ns
 
 			void InvalidateMatrix();
 			void RandomizeMatrix();
-			NeuralNetwork_ns::layer_output_t CalculateInducedLocalField(NeuralNetwork_ns::layer_input_t);
-			NeuralNetwork_ns::layer_output_t CalculateOutput(NeuralNetwork_ns::layer_input_t);
+
+			void CalculateInducedLocalField(NeuralNetwork_ns::layer_input_t);
+			NeuralNetwork_ns::layer_output_t ReadInducedLocalField();
+
+			void CalculateOutput(NeuralNetwork_ns::layer_input_t);
+			NeuralNetwork_ns::layer_output_t ReadOutput();
 
 		private:
 			NeuralNetwork_ns::numeric m_nInputs;
@@ -43,6 +48,9 @@ namespace NeuralNetwork_ns
 			
 			NeuralNetwork_ns::layer_weights_t m_Weights;
 			NeuralNetwork_ns::layer_biases_t m_Bias;
+
+			NeuralNetwork_ns::layer_output_t m_InducedLocalField;
+			NeuralNetwork_ns::layer_output_t m_Activation;
 
 			NeuralNetwork_ns::ActivationFunction::IActivationFunction m_ActivationFunction;
 		};
