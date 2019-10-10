@@ -36,11 +36,21 @@ namespace NeuralNetwork_ns
 			void InvalidateMatrix();
 			void RandomizeMatrix();
 
-			void CalculateInducedLocalField(NeuralNetwork_ns::layer_input_t);
+			virtual void CalculateInducedLocalField(NeuralNetwork_ns::layer_input_t);
 			NeuralNetwork_ns::layer_output_t ReadInducedLocalField();
 
-			void CalculateOutput(NeuralNetwork_ns::layer_input_t);
+			virtual void CalculateOutput(NeuralNetwork_ns::layer_input_t);
 			NeuralNetwork_ns::layer_output_t ReadOutput();
+
+			void SetPreviousLayer(ILayer* layer);
+			ILayer* GetPreviousLayer();
+
+			void SetNextLayer(ILayer* layer);
+			ILayer* GetNextLayer();
+
+		protected:
+			NeuralNetwork_ns::layer_output_t m_InducedLocalField;
+			NeuralNetwork_ns::layer_output_t m_Activation;
 
 		private:
 			NeuralNetwork_ns::numeric m_nInputs;
@@ -49,15 +59,17 @@ namespace NeuralNetwork_ns
 			NeuralNetwork_ns::layer_weights_t m_Weights;
 			NeuralNetwork_ns::layer_biases_t m_Bias;
 
-			NeuralNetwork_ns::layer_output_t m_InducedLocalField;
-			NeuralNetwork_ns::layer_output_t m_Activation;
+			ILayer* m_PreviousLayer;
+			ILayer* m_NextLayer;
 
 			NeuralNetwork_ns::ActivationFunction::IActivationFunction m_ActivationFunction;
 		};
 
 		class InputLayer : public ILayer
 		{
-
+		public:
+			void CalculateInducedLocalField(NeuralNetwork_ns::layer_input_t input) override;
+			void CalculateOutput(NeuralNetwork_ns::layer_input_t input) override;
 		};
 
 		class DenseLayer : public ILayer
